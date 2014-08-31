@@ -39,4 +39,13 @@
       <% end %>
     </div>
   </div>
+   <% if logged_in? %>
+    <h1>Welcome <%= current_user.email %>.</h1>
+    <% end %>
+
+    <% if logged_in? %>
+    <script>
+    $("#logindiv").remove()
+    </script>
+    <% end %>
 </center>

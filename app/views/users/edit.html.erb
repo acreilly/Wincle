@@ -1,18 +1,5 @@
-<%= form_for @user, url: {action: "update"} do |f| %>
-<%= f.label :type, "Type: " %>
-<%= f.select :type, options_for_select([["Employee", "employee"], ["Employer", "employer"]], {:include_blank => '-- Select One --'}, :required => true ) %>
+<% if current_user.type == "Employee" %>
 
-<div id="employee">
+<% elsif current_user.type == "Employer" %>
 
-</div>
-
-<div id="employer">
-  <%= f.text_field :company %>
-  <%= f.select :industry, options_for_select([]) %>
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  <div id="map-canvas"></div>
-  <%= f.hidden_field :latitude, :value => 37.760821 %>
-  <%= f.hidden_field :longitude, :value => -122.450303 %>
-</div>
-<%= f.submit %>
 <% end %>
