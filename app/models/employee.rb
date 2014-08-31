@@ -1,3 +1,4 @@
 class Employee < ActiveRecord::Base
-  has_one :user
+    has_secure_password
+  validates_confirmation_of :password
 end
