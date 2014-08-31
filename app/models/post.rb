@@ -1,3 +1,3 @@
 class Post < ActiveRecord::Base
-  has_one :employer
+  belongs_to :employer
 end

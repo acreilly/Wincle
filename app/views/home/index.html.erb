@@ -21,6 +21,15 @@
     <div id="signupForm">
       <button class="goBack">Go Back</button>
       <%= form_for @user, {action: "create"} do |f| %>
+      <%= f.label :type, "Type: " %>
+      <%= f.select :type, options_for_select([["Employee", "employee"], ["Employer", "employer"]], {:include_blank => '-- Select One --'}, :required => true ) %>
+      <%= f.label :first_name, "First name: " %>
+      <%= f.text_field :first_name %>
+      <%= f.label :last_name, "Last name: " %>
+      <%= f.text_field :last_name %>
+      <%= f.text_field :telephone, "Telephone:" %>
+      <%= f.text_field :telephone %>
+      <%= f.text_field :email, "Email:" %>
       <%= f.text_field :email, required: true, type: "email", pattern: "[^@]+@[^@]+\.[a-zA-Z]{2,6}", placeholder: "E-MAIL" %>
       <br>
       <%= f.password_field :password, required: true, placeholder: "PASSWORD" %>
