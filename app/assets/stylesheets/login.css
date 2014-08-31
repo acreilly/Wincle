@@ -14,7 +14,7 @@
 #loginForm, #signupForm{
   display: none;
   position: relative;
-  top: 30%;
+  top: 10%;
 }
 
 #logindiv .form {
