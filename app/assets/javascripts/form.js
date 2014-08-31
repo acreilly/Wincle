@@ -13,7 +13,7 @@ FormController.prototype = {
     } else if (userType === "Employerr"){
       $("#employee").empty();
       $(".info").css("display", "block")
-
+}
   },
   changeCheck: function(){
     $("#event-container").on("change", "#losting_user_type", this.userCheck)
