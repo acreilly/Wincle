@@ -1,6 +1,8 @@
 class CreateEmployees < ActiveRecord::Migration
   def change
     create_table :employees do |t|
+      t.belongs_to :user
+
       t.string :first_name
       t.string :last_name
       t.integer :telephone

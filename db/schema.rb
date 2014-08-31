@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 20140831212249) do
 
   create_table "employees", force: true do |t|
     t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "telephone"
+    t.string   "email"
+    t.string   "password_digest"
     t.string   "industry"
     t.string   "job_title"
     t.text     "bio"
@@ -30,6 +35,11 @@ ActiveRecord::Schema.define(version: 20140831212249) do
 
   create_table "employers", force: true do |t|
     t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "telephone"
+    t.string   "email"
+    t.string   "password_digest"
     t.string   "company"
     t.string   "industry"
     t.datetime "created_at"
