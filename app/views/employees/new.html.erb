@@ -1,0 +1,17 @@
+<%= form_for @employee, url: {action: "create"} do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <%= f.telephone_field(:user, :phone) %>
+  <%= f.email_field(:user, :address) %>
+  <%= f.label :industry %>
+  <%= f.text_field :industry  %>
+  <%= f.label :job_title %>
+  <%= f.text_field :job_title  %>
+  <%= f.label :location%>
+  <%= f.text_field :location %>
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+  <%= f.submit "Create Employee Profile" %>
+<% end %>
