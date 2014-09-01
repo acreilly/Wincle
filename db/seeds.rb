@@ -11,6 +11,8 @@ require 'chronic'
 industry = ['Entertainment','Hospitality','Non-Profit']
 job_title = ["bar tender","waitress","busser","data entry"]
 longs = [-122.411295, -122.408849, -122.409849, -122.397733, -122.4, -122.75, -122.738, -122.433396, -122.44, -122.45]
+lat = 37.785126
+var = (1..5).to_a.sample
 
 5.times do
   user = User.create(
@@ -45,9 +47,10 @@ end
     industry: industry.sample,
     job_title: job_title.sample,
     bio: Faker::Lorem.sentence(3),
-    location: "San Francisco, CA"
-  )
-
+    location: "San Francisco, CA",
+    latitude: lat,
+    longitude: longs.sample
+    )
 end
 
 employers = Employer.all
@@ -65,7 +68,9 @@ employers.each do |employer|
       end_time: Chronic.parse('tomorrow at 12pm'),
       description: Faker::Lorem.sentence(3),
       location: "San Francisco, CA",
-      expiration_status: Chronic.parse("in #{days} days")
+      expiration_status: Chronic.parse("in #{days} days"),
+      latitude: lat,
+      longitude: longs.sample + var
       )
   end
 end

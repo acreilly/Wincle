@@ -15,7 +15,8 @@ class SearchAlgorithm
 
     # score -= 10 if @listing.size != match.size
     # score -= 5 if @listing.breed != match.breed
-    score -= 20 if @listing.job_title != match.job_title
+    score -= 100 if @listing.job_title != match.job_title
+    score -= 10 if @listing.location != match.location
     # score -= 20 if @listing.coat_length != match.coat_length
 
     points = ((distance_between(@listing.latitude, @listing.longitude, match) - 1) * 5).floor
