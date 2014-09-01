@@ -11,24 +11,25 @@ class SearchAlgorithm
 
   def score(match)
     score = 100
-    score = 0 if @listing.animal_type != match.animal_type
+    binding.pry
+    # score = 0 if @listing.employee.industry != match.industry
 
-    score -= 10 if @listing.size != match.size
-    score -= 5 if @listing.breed != match.breed
-    score -= 20 if @listing.coat_color != match.coat_color
-    score -= 20 if @listing.coat_length != match.coat_length
+    # score -= 10 if @listing.size != match.size
+    # score -= 5 if @listing.breed != match.breed
+    score -= 20 if @listing.job_title != match.job_title
+    # score -= 20 if @listing.coat_length != match.coat_length
 
-    points = ((distance_between(@listing.Lat, @listing.Lng, match) - 1) * 5).floor
+    points = ((distance_between(@listing.latitude, @listing.longitude, match) - 1) * 5).floor
     score -= points if points > 0
 
-    points = (days_apart(@listing.event_date, match.event_date) * 30).floor
+    # points = (days_apart(@listing.event_date, match.event_date) * 30).floor
     score -= points if points > 0
     score
   end
 
   def distance_between(target_lat, target_lng, match)
-    match_lat = match.Lat
-    match_lng = match.Lng
+    match_lat = match.latitude
+    match_lng = match.longitude
 
     r = 6371
     pi_const = Math::PI / 180
