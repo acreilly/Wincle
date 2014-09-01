@@ -2,6 +2,7 @@ class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
       t.belongs_to :employer
+      t.string :industry
       t.decimal :wage
       t.string :job_title
       t.date :start_date

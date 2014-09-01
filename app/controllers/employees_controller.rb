@@ -20,7 +20,7 @@ class EmployeesController < ApplicationController
   end
 
   def show
-
+    @employee = Employee.find(:id)
   end
 
   def delete

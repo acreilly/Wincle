@@ -11,7 +11,6 @@ class SearchAlgorithm
 
   def score(match)
     score = 100
-    binding.pry
     # score = 0 if @listing.employee.industry != match.industry
 
     # score -= 10 if @listing.size != match.size
