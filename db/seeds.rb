@@ -10,6 +10,7 @@ require 'chronic'
 
 industry = ['Entertainment','Hospitality','Non-Profit']
 job_title = ["bar tender","waitress","busser","data entry"]
+longs = [-122.411295, -122.408849, -122.409849, -122.397733, -122.4, -122.75, -122.738, -122.433396, -122.44, -122.45]
 
 5.times do
   user = User.create(
