@@ -50,7 +50,7 @@ end
     location: "San Francisco, CA",
     latitude: lat,
     longitude: longs.sample
-  )
+    )
 end
 
 employers = Employer.all

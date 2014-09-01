@@ -32,6 +32,10 @@ gem 'faker'
 gem 'chronic'
 gem 'pry'
 
+gem 'faker'
+
+gem 'chronic'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
