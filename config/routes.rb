@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :users
   resources :employees
-  resources :employers
+  resources :employers, only: [:edit, :update]
+  resources :posts
   resources :sessions, only: [:create, :destroy]
   delete "delete_session", to: "sessions#destroy", as: "delete_session"
   # The priority is based upon order of creation: first created -> highest priority.
