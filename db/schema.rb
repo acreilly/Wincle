@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 20140831212249) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "type"
+    t.string   "user_type"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "telephone"
+    t.string   "telephone"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
