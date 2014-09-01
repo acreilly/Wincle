@@ -6,8 +6,8 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :job_title
       t.text :bio
       t.string :location
-      t.integer :latitude
-      t.integer :longitude
+      t.decimal :latitude
+      t.decimal :longitude
       t.timestamps
     end
   end

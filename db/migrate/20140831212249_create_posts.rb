@@ -10,8 +10,8 @@ class CreatePosts < ActiveRecord::Migration
       t.time :end_time
       t.text :description
       t.string :location
-      t.integer :latitude
-      t.integer :longitude
+      t.decimal :latitude
+      t.decimal :longitude
       t.boolean :expiration_status, default: false
       t.timestamps
     end
