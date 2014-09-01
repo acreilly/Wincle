@@ -1,11 +1,15 @@
-<%= form_for @employee, url: {action: "update"} do |f| %>
+<%= form_for @employee do |f| %>
   <%= f.label :industry %>
   <%= f.text_field :industry  %>
+  <br>
   <%= f.label :job_title %>
   <%= f.text_field :job_title  %>
-  <%= f.label :location%>
+  <br>
+  <%= f.label :location %>
   <%= f.text_field :location %>
+  <br>
   <%= f.label :bio %>
   <%= f.text_area :bio %>
+  <br>
   <%= f.submit "Save Employee Profile" %>
 <% end %>
