@@ -1,0 +1,29 @@
+<%= form_for @post do |f| %>
+<%= f.text_field :job_title %>
+<br>
+<%= f.date_select :start_date %>
+<br>
+<%= f.date_select :end_date %>
+<br>
+<%= f.time_select :start_time %>
+<br>
+<%= f.time_select :end_time %>
+<br>
+<%= f.text_field :location %>
+<br>
+<%= f.text_field :description %>
+<br>
+<%= f.submit %>
+<% end %>
+<!--
+t.string :industry
+      t.decimal :wage
+      t.string :job_title
+      t.date :start_date
+      t.date :end_date
+      t.time :start_time
+      t.time :end_time
+      t.text :description
+      t.string :location
+      t.integer :latitude
+      t.integer :longitude -->
