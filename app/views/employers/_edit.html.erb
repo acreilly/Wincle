@@ -1,0 +1,9 @@
+<%= form_for @employer, url: employer_path(@employer) do |f| %>
+  <%= f.label :industry %>
+  <%= f.text_field :industry  %>
+  <br>
+  <%= f.label :company %>
+  <%= f.text_field :company  %>
+  <br>
+  <%= f.submit "Save Employer Profile" %>
+<% end %>

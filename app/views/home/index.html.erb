@@ -21,7 +21,7 @@
     <div id="signupForm">
       <button class="goBack">Go Back</button>
       <%= form_for @user, {action: "create"} do |f| %>
-      <%= f.select :type, options_for_select([["Employee", "employee"], ["Employer", "employer"]]), {:include_blank => '-- Select TYPE --'}, :required => true  %>
+      <%= f.select :user_type, options_for_select([["Employee", "employee"], ["Employer", "employer"]]), {:include_blank => '-- Select TYPE --'}, :required => true  %>
       <br>
       <%= f.text_field :first_name, placeholder: "FIRST NAME" %>
       <br>
