@@ -16,7 +16,7 @@ class EmployeesController < ApplicationController
       industry: params[:employee][:industry],
       job_title: params[:employee][:job_title],
       location: params[:employee][:location], bio: params[:employee][:bio])
-    redirect_to root_path
+    redirect_to posts_path
   end
 
   def show
