@@ -40,7 +40,21 @@ class UsersController < ApplicationController
   end
 
   def delete
+  end
 
+  def login
+    linkedin = LinkedinHelper::ToLinkedin.new
+    redirect_to "#{linkedin.login}"
+  end
+
+  def linkedin_callback
+    linkedin = LinkedinHelper::ToLinkedin.new
+    access_token = linkedin.get_access_token(params[:code])
+    user_profile = HTTParty.get("https://api.linkedin.com/v1/people/~?"+
+      "oauth2_access_token=#{access_token}")
+    user_email = HTTParty.get("https://api.linkedin.com/v1/people/~/email-address?"+
+      "oauth2_access_token=#{access_token}")
+    redirect_to root_path
   end
 
   private

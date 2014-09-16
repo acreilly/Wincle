@@ -11,6 +11,9 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+gem 'oauth2'
+gem "linkedin-oauth2", "~> 1.0"
+gem 'omniauth-linkedin-oauth2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -18,6 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'dotenv-rails', :groups => [:development, :test]
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -31,6 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'chronic'
 gem 'pry'
+gem 'httparty'
 
 # Use unicorn as the app server
 # gem 'unicorn'
