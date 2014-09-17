@@ -1,6 +1,6 @@
-function MapController(model){
+function MapController(model, markers){
   this.model = model;
-  // this.markers = markers;
+  this.markers = markers;
 }
 
 MapController.prototype = {
@@ -40,7 +40,6 @@ MapModel.prototype = {
 
     this.map = new google.maps.Map($("#my_map")[0], mapOptions)
     // this.setMapBounds()
-
   },
 
   setMapBounds: function(){
@@ -57,5 +56,8 @@ MapModel.prototype = {
       }
       map.panTo(lastValidCenter);
     });
+  },
+  searchBar: function(){
+
   }
 }
