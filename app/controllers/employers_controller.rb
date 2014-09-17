@@ -1,5 +1,6 @@
 class EmployersController < ApplicationController
   include SessionsHelper
+  include UsersHelper
 
   def index
 
@@ -14,7 +15,7 @@ class EmployersController < ApplicationController
     employer.update_attributes(
       industry: params[:employer][:industry],
       company: params[:employer][:company])
-    redirect_to root_path
+    redirect_to posts_path
   end
 
   def show

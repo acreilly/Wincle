@@ -11,19 +11,15 @@ class SearchAlgorithm
 
   def score(match)
     score = 100
-    # score = 0 if @listing.employee.industry != match.industry
-
-    # score -= 10 if @listing.size != match.size
-    # score -= 5 if @listing.breed != match.breed
-    score -= 100 if @listing.job_title != match.job_title
+    score -= 100 if @listing.industry != match.industry
+    score -= 80 if @listing.job_title != match.job_title
     score -= 10 if @listing.location != match.location
-    # score -= 20 if @listing.coat_length != match.coat_length
 
-    points = ((distance_between(@listing.latitude, @listing.longitude, match) - 1) * 5).floor
-    score -= points if points > 0
+    # points = ((distance_between(@listing.latitude, @listing.longitude, match) - 1) * 5).floor
+    # score -= points if points > 0
 
-    # points = (days_apart(@listing.event_date, match.event_date) * 30).floor
-    score -= points if points > 0
+    # # points = (days_apart(@listing.event_date, match.event_date) * 30).floor
+    # score -= points if points > 0
     score
   end
 

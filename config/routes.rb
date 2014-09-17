@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   delete "delete_session", to: "sessions#destroy", as: "delete_session"
   get "login", to: "users#login", as: "login"
   get "linkedin_callback", to: "users#linkedin_callback", as: "linkedin_callback"
+  get "home", to: "users#home", as: "home"
+  # get "employees", to: "posts#employees", as: "employees"
+  # get "employers", to: "posts#employers", as: "employers"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20140831212249) do
     t.string   "job_title"
     t.text     "bio"
     t.string   "location"
-    t.integer  "latitude"
-    t.integer  "longitude"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140831212249) do
 
   create_table "posts", force: true do |t|
     t.integer  "employer_id"
+    t.string   "industry"
     t.decimal  "wage"
     t.string   "job_title"
     t.date     "start_date"
@@ -46,8 +47,8 @@ ActiveRecord::Schema.define(version: 20140831212249) do
     t.time     "end_time"
     t.text     "description"
     t.string   "location"
-    t.integer  "latitude"
-    t.integer  "longitude"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
     t.boolean  "expiration_status", default: false
     t.datetime "created_at"
     t.datetime "updated_at"

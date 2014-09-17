@@ -25,6 +25,8 @@ class UsersController < ApplicationController
   end
 
   def edit
+    info = JobInfo::Client.new
+    @industry = info.get_industries
     if current_user.user_type == "employee"
       @employee = current_user.employee
     else
@@ -37,6 +39,10 @@ class UsersController < ApplicationController
 
   def show
 
+  end
+
+  def home
+    @posts = Post.all
   end
 
   def delete

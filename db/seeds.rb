@@ -1,15 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
 require 'chronic'
 
-industry = ['Entertainment','Hospitality','Non-Profit']
-job_title = ["bar tender","waitress","busser","data entry"]
+industry = ["Accounting", "Airlines/Aviation", "Alternative Dispute Resolution", "Alternative Medicine", "Animation", "Apparel & Fashion"]
+job_title = ["Accountant","Stewardess","Fashion Designer","Animator"]
 longs = [-122.411295, -122.408849, -122.409849, -122.397733, -122.4, -122.75, -122.738, -122.433396, -122.44, -122.45]
 lat = 37.785126
 var = (1..5).to_a.sample
@@ -29,7 +22,6 @@ var = (1..5).to_a.sample
     company: Faker::Company.name,
     industry: industry.sample
   )
-
 end
 
 10.times do
@@ -61,6 +53,7 @@ employers.each do |employer|
     Post.create(
       employer_id: employer.id,
       wage: 15.00,
+      industry: employer.industry,
       job_title: job_title.sample,
       start_date: Chronic.parse('tomorrow at 9pm'),
       end_date: Chronic.parse("in #{days} days"),

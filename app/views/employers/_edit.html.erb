@@ -1,6 +1,6 @@
 <%= form_for @employer, url: employer_path(@employer) do |f| %>
   <%= f.label :industry %>
-  <%= f.text_field :industry  %>
+  <%= f.select :industry, options_for_select(@industry)  %>
   <br>
   <%= f.label :company %>
   <%= f.text_field :company  %>
