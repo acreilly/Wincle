@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   include SessionsHelper
+  include UsersHelper
 
   def index
-
   end
 
   def new
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = user.find(params[:id])
   end
 
   def home
@@ -56,20 +56,23 @@ class UsersController < ApplicationController
   def linkedin_callback
     linkedin = LinkedinHelper::ToLinkedin.new
     access_token = linkedin.get_access_token(params[:code])
-    api = LinkedIn::API.new(access_token)
-    user_profile = api.profile
-    binding.pry
-    user_info = api.profile(fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url'])
-    session[:user_id] = user_info["id"]
-    session[:email] = user_info["email-address"]
-    session[:first_name] = user_info["first_name"]
-    session[:last_name] = user_info["last_name"]
-    session[:industry] = user_info["industry"]
-    session[:picture_url] = user_info["picture_url"]
-    session[:headline] = user_info["headline"]
-    session[:public_profile_url] = user_info["public-profile-url"]
 
-    redirect_to root_path
+
+    if access_token.nil?
+      redirect_to root_path
+    else
+
+      user_info = get_user_info(access_token)
+
+      user = User.find(linkedin_id: user_info["id"])
+      binding.pry
+      if user.id == nil
+        create_user(user_info)
+      else
+        set_sessions(user, user_info)
+      end
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   private
