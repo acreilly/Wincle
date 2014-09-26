@@ -55,12 +55,13 @@ ActiveRecord::Schema.define(version: 20140831212249) do
   end
 
   create_table "users", force: true do |t|
+    t.string   "linkedin_id"
+    t.string   "facebook_id"
     t.string   "user_type"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "telephone"
+    t.string   "industry"
     t.string   "email"
-    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

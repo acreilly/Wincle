@@ -1,6 +1,6 @@
 module LinkedinHelper
   class ToLinkedin
-include HTTParty
+    include HTTParty
     def login
       "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ENV['LINKEDIN_API_KEY']}&scope=r_fullprofile%20r_emailaddress%20r_network%20r_basicprofile%20r_contactinfo&state=#{ENV['STATE']}&redirect_uri=#{ENV['REDIRECT_URI']}"
     end
@@ -14,6 +14,17 @@ include HTTParty
     def get_user_info(access_token)
       api = LinkedIn::API.new(access_token)
       api.profile(fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url'])
+    end
+
+    def create_user(info)
+      user = User.new(email: info["email-address"], first_name: info["first_name"], last_name: info["last_name"], industry: info["industry"], linkedin_id: info["id"])
+      if user.save
+        sessions = SessionsHelper::Sessions.new
+        sessions.set_sessions(user, info)
+        redirect_to user_path(user)
+      else
+        redirect_to root_path
+      end
     end
   end
 end

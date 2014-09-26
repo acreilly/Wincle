@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def home
@@ -65,23 +65,25 @@ class UsersController < ApplicationController
     oauth = LinkedIn::OAuth2.new
     code = params[:code]
     access_token = oauth.get_access_token(code)
-    binding.pry
-    linkedin = LinkedinHelper::ToLinkedin.new
-    access_token = linkedin.get_access_token(params[:code])
-    binding.pry
-    api = LinkedIn::API.new(access_token)
-    user_profile = api.profile
-    user_info = api.profile(fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url'])
-    session[:user_id] = user_info["id"]
-    session[:email] = user_info["email-address"]
-    session[:first_name] = user_info["first_name"]
-    session[:last_name] = user_info["last_name"]
-    session[:industry] = user_info["industry"]
-    session[:picture_url] = user_info["picture_url"]
-    session[:headline] = user_info["headline"]
-    session[:public_profile_url] = user_info["public-profile-url"]
 
-    redirect_to root_path
+    linkedin = LinkedinHelper::ToLinkedin.new
+    if access_token.nil?
+      redirect_to root_path
+    else
+
+      user_info = linkedin.get_user_info(access_token)
+      linkedin_id = user_info["id"]
+      user = User.find_by(linkedin_id: linkedin_id)
+      if user == nil
+        linkedin.create_user(user_info)
+      else
+        session[:user_id] = user.id
+        session[:picture_url] = user_info["picture_url"]
+        session[:headline] = user_info["headline"]
+        session[:public_profile_url] = user_info["public-profile-url"]
+      end
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   private
