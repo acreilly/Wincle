@@ -50,16 +50,25 @@ class UsersController < ApplicationController
   def linkedin_callback
     linkedin = LinkedinHelper::ToLinkedin.new
     access_token = linkedin.get_access_token(params[:code])
-    user_profile = HTTParty.get("https://api.linkedin.com/v1/people/~?"+
-      "oauth2_access_token=#{access_token}")
-    user_email = HTTParty.get("https://api.linkedin.com/v1/people/~/email-address?"+
-      "oauth2_access_token=#{access_token}")
+    api = LinkedIn::API.new(access_token)
+    user_profile = api.profile
+    binding.pry
+    user_info = api.profile(fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url'])
+    session[:user_id] = user_info["id"]
+    session[:email] = user_info["email-address"]
+    session[:first_name] = user_info["first_name"]
+    session[:last_name] = user_info["last_name"]
+    session[:industry] = user_info["industry"]
+    session[:picture_url] = user_info["picture_url"]
+    session[:headline] = user_info["headline"]
+    session[:public_profile_url] = user_info["public-profile-url"]
+
     redirect_to root_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:user_type, :first_name, :last_name, :telephone, :email, :password, :password_confirmation)
+    params.require(:user).permit(:user_type, :first_name, :last_name, :email, :password, :password_confirmation)
   end
 end
