@@ -5,9 +5,9 @@ $(document).ready(function() {
 
 
   // //  ---------------------------- LOGIN
-  // var loginView = new LoginView()
-  // var loginController = new LoginController(loginView)
-  // loginController.initialize()
+  var loginView = new LoginView()
+  var loginController = new LoginController(loginView)
+  loginController.initialize()
 
   var formController = new FormController();
   formController.initialize()
