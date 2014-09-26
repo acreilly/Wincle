@@ -37,8 +37,8 @@ MapModel.prototype = {
       zoom: 13,
       center: currentLocation
     };
-
     this.map = new google.maps.Map($("#my_map")[0], mapOptions)
+    this.autopopulateLocation(currentLocation)
     this.searchBar(this.map, currentLocation)
     // this.setMapBounds()
   },
@@ -98,12 +98,32 @@ MapModel.prototype = {
       markers.push(marker);
       bounds.extend(place.geometry.location);
     }
-debugger
+    debugger
     map.fitBounds(bounds);
   });
-google.maps.event.addListener(map, 'bounds_changed', function() {
+  google.maps.event.addListener(map, 'bounds_changed', function() {
     var bounds = map.getBounds();
     searchBox.setBounds(bounds);
   });
+},
+autopopulateLocation: function(location){
+  $.ajax({
+    method: "get",
+    url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location.toString().replace("(", "").replace(")", "") + "&key=AIzaSyBnpjI0eut55g0on7RKUDzxCmEmyif2oCM"
+  }).done(function(data){
+    $("#location")[0].value = data.results[1].formatted_address
+    $("#lat")[0].value = data.results[1].geometry.location.lat
+    $("#lng")[0].value = data.results[1].geometry.location.lng
+  })
+},
+enterLocation: function(){
+  event.preventDefault()
+  var geocoder = new google.maps.Geocoder();
+  var location = $("#location")[0].value;
+  geocoder.geocode({"address": location}, function(results, status){
+    $("#location")[0].value = results[0].formatted_address
+    $("#lat")[0].value = results[0].geometry.location.lat
+    $("#lng")[0].value = results[0].geometry.location.lng
+  })
 }
 }

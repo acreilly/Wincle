@@ -2,5 +2,12 @@
 
 <div id="my_map"></div>
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<input type="search">
+
+<form class="getLoc">
+  <input type="search" id="location">
+  <input type="text" id="lat" style="display: none;">
+  <input type="text" id="lng" style="display: none;">
+  <input type="submit">
+</form>
+
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
