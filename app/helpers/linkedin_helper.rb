@@ -2,7 +2,7 @@ module LinkedinHelper
   class ToLinkedin
 
     def login
-      "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ENV["LINKEDIN_API_KEY"]}&scope=r_fullprofile%20r_emailaddress%20r_network&state=#{ENV["STATE"]}&redirect_uri=#{ENV["REDIRECT_URI"]}"
+      "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ENV["LINKEDIN_API_KEY"]}&scope=r_fullprofile%20r_emailaddress%20r_network%20r_basicprofile%20r_contactinfo&state=#{ENV["STATE"]}&redirect_uri=#{ENV["REDIRECT_URI"]}"
     end
 
     def get_access_token(auth_code)

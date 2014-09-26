@@ -11,12 +11,15 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+<<<<<<< HEAD
 gem 'oauth2'
 gem 'omniauth'
 gem 'omniauth-linkedin'
+gem 'oauth'
 gem 'linkedin'
 gem "linkedin-oauth2", "~> 1.0"
-gem 'omniauth-linkedin-oauth2'
+# gem "linkedin-oauth2", "~> 1.0"
+# gem 'omniauth-linkedin-oauth2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -39,6 +42,7 @@ gem 'faker'
 gem 'chronic'
 gem 'pry'
 gem 'httparty'
+gem 'json'
 
 # Use unicorn as the app server
 # gem 'unicorn'

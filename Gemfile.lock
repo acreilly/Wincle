@@ -88,6 +88,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+<<<<<<< HEAD
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
@@ -104,6 +105,8 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+=======
+>>>>>>> sessions
     pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.1)
@@ -177,12 +180,19 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+<<<<<<< HEAD
   linkedin
   linkedin-oauth2 (~> 1.0)
   oauth2
   omniauth
   omniauth-linkedin
   omniauth-linkedin-oauth2
+=======
+  json
+  linkedin
+  linkedin-oauth2 (~> 1.0)
+  oauth
+>>>>>>> sessions
   pg
   pry
   rails (= 4.1.4)
