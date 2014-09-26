@@ -50,11 +50,15 @@ class UsersController < ApplicationController
 
   def login
     linkedin = LinkedinHelper::ToLinkedin.new
+client = OAuth2::Client.new( "#{ENV['LINKEDIN_API_KEY']}", "#{ENV['LINKEDIN_API_SECRET']}", :site => 'https://linkedin.com')
+
+client.auth_code.authorize_url(:redirect_uri => 'http://localhost:8080/oauth2/callback')
     redirect_to "#{linkedin.login}"
   end
 
   def linkedin_callback
     linkedin = LinkedinHelper::ToLinkedin.new
+
     access_token = linkedin.get_access_token(params[:code])
 
 
@@ -62,8 +66,8 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
 
-      user_info = get_user_info(access_token)
-
+      user_info = linkedin.get_user_info(access_token)
+binding.pry
       user = User.find(linkedin_id: user_info["id"])
       binding.pry
       if user.id == nil
