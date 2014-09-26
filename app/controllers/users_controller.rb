@@ -50,33 +50,39 @@ class UsersController < ApplicationController
 
   def login
     linkedin = LinkedinHelper::ToLinkedin.new
-client = OAuth2::Client.new( "#{ENV['LINKEDIN_API_KEY']}", "#{ENV['LINKEDIN_API_SECRET']}", :site => 'https://linkedin.com')
+    LinkedIn.configure do |config|
+      config.client_id     = ENV["LINKEDIN_API_KEY"]
+      config.client_secret = ENV["LINKEDIN_SECRET_KEY"]
+      config.redirect_uri  = "http://localhost:3000/linkedin_callback"
+    end
+    oauth = LinkedIn::OAuth2.new
 
-client.auth_code.authorize_url(:redirect_uri => 'http://localhost:8080/oauth2/callback')
-    redirect_to "#{linkedin.login}"
+    url = oauth.auth_code_url
+    binding.pry
+    redirect_to "#{url}"
   end
 
   def linkedin_callback
+    oauth = LinkedIn::OAuth2.new
+    code = params[:code]
+    access_token = oauth.get_access_token(code)
+    binding.pry
     linkedin = LinkedinHelper::ToLinkedin.new
-
     access_token = linkedin.get_access_token(params[:code])
+    binding.pry
+    api = LinkedIn::API.new(access_token)
+    user_profile = api.profile
+    user_info = api.profile(fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url'])
+    session[:user_id] = user_info["id"]
+    session[:email] = user_info["email-address"]
+    session[:first_name] = user_info["first_name"]
+    session[:last_name] = user_info["last_name"]
+    session[:industry] = user_info["industry"]
+    session[:picture_url] = user_info["picture_url"]
+    session[:headline] = user_info["headline"]
+    session[:public_profile_url] = user_info["public-profile-url"]
 
-
-    if access_token.nil?
-      redirect_to root_path
-    else
-
-      user_info = linkedin.get_user_info(access_token)
-binding.pry
-      user = User.find(linkedin_id: user_info["id"])
-      binding.pry
-      if user.id == nil
-        create_user(user_info)
-      else
-        set_sessions(user, user_info)
-      end
-      redirect_to user_path(session[:user_id])
-    end
+    redirect_to root_path
   end
 
   private

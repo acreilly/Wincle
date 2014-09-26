@@ -165,6 +165,7 @@ DEPENDENCIES
   linkedin
   linkedin-oauth2 (~> 1.0)
   oauth
+  oauth2
   pg
   pry
   rails (= 4.1.4)
