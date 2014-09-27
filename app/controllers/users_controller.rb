@@ -69,14 +69,16 @@ class UsersController < ApplicationController
       linkedin_id = user_info["id"]
       user = User.find_by(linkedin_id: linkedin_id)
       if user == nil
-        linkedin.create_user(user_info)
+        user = linkedin.create_user(user_info)
+        if user.save
+          set_sessions(user, user_info)
+        else
+          redirect_to root_path
+        end
       else
-        session[:user_id] = user.id
-        session[:picture_url] = user_info["picture_url"]
-        session[:headline] = user_info["headline"]
-        session[:public_profile_url] = user_info["public-profile-url"]
+        set_sessions(user, user_info)
       end
-      redirect_to user_path(session[:user_id])
+      redirect_to user_path(user)
     end
   end
 

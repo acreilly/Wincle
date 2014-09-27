@@ -18,15 +18,7 @@ module LinkedinHelper
 
     def create_user(info)
       user = User.new(email: info["email-address"], first_name: info["first_name"], last_name: info["last_name"], industry: info["industry"], linkedin_id: info["id"])
-      if user.save
-        session[:user_id] = user.id
-        session[:picture_url] = info["picture_url"]
-        session[:headline] = info["headline"]
-        session[:public_profile_url] = info["public-profile-url"]
-        redirect_to user_path(user)
-      else
-        redirect_to root_path
-      end
     end
+
   end
 end
