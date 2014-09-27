@@ -45,7 +45,9 @@ class UsersController < ApplicationController
     @posts = Post.all
   end
 
-  def delete
+  def destroy
+    logout
+    redirect_to root_path
   end
 
   def login

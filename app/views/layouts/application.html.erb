@@ -9,6 +9,16 @@
 <body>
 <header>
   <h2>Wincle</h2>
+  <% if logged_in? %>
+  <nav>
+    <ul>
+    <li><a href="">Profile</a></li>
+    <li><a href="">Employer</a></li>
+    <li><a href="">Employee</a></li>
+    <li><%= link_to "Logout", user_path(@user), method: :delete %></li>
+  </ul>
+</nav>
+<% end %>
 </header>
 
 <%= yield %>
