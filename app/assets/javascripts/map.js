@@ -30,8 +30,8 @@ MapModel.prototype = {
       center: currentLocation
     };
     this.map = new google.maps.Map($("#my_map")[0], mapOptions)
-    this.autopopulateLocation(currentLocation)
-    this.searchBar(this.map, currentLocation)
+    // this.autopopulateLocation(currentLocation)
+    // this.searchBar(this.map, currentLocation)
     // this.setMapBounds()
   },
 
@@ -90,7 +90,6 @@ MapModel.prototype = {
       markers.push(marker);
       bounds.extend(place.geometry.location);
     }
-    debugger
     map.fitBounds(bounds);
   });
   google.maps.event.addListener(map, 'bounds_changed', function() {

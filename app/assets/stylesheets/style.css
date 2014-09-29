@@ -11,7 +11,7 @@ header{
   padding: 0;
 }
 
-#location {
+#autocomplete {
   -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
   -ms-border-radius: 2em;
