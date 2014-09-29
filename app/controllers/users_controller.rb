@@ -3,12 +3,18 @@ class UsersController < ApplicationController
   include UsersHelper
 
   def index
+    # Maybe use to search specific users?
+    # Maybe dont need at all
   end
 
+
+# MIGHT NOT NEED THIS
   def new
     @user = User.new
   end
 
+
+# MIGHT NOT NEED CREATE ANYMORE SINCE ONLY USING LINKEDIN
   def create
     @user = User.new(user_params)
     if @user.save
@@ -25,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    # ADD EDIT USER SECTION
     info = JobInfo::Client.new
     @industry = info.get_industries
     if current_user.user_type == "employee"

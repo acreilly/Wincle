@@ -4,16 +4,8 @@ function MapController(model, markers){
 }
 
 MapController.prototype = {
-  getLocation: function(){
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.initialize.bind(this));
-    } else {
-      console.log( "Geolocation is not supported by this browser.");
-    }
-  },
-
   initialize: function(position){
-    this.model.createMap(position);
+    this.map.model.createMap(position);
     // this.markers.initializeMarkers(this.model.map)
   }
 }
