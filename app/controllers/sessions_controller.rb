@@ -10,9 +10,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
-    session[:user_id] = nil
-    # remember to clear ALL sessions
+  def logout
+    logout
     redirect_to root_path
   end
 

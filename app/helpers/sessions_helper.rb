@@ -10,8 +10,10 @@ module SessionsHelper
 
   def logout
     session[:user_id] = nil
+    session[:picture_url] = nil
+    session[:headline] = nil
+    session[:public_profile_url] = nil
   end
-
 
   def set_sessions(user, info)
     session[:user_id] = user.id

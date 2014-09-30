@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   include UsersHelper
 
   def index
-    # Maybe use to search specific users?
     # Maybe dont need at all
+    # Maybe use to search specific users?
   end
 
 
@@ -56,8 +56,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    logout
-    redirect_to root_path
+    # to delete a user
   end
 
   def login

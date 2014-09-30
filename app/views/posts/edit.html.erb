@@ -11,21 +11,10 @@
 <%= f.textarea :description %>
 <%= f.label :location %>
 <%= f.text_field :location %>
+<div id="my_map"></div>
+<!-- MAKE PAC-INPUT LOCATION INSTEAD -->
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <%= f.hidden_field :latitude %>
 <%= f.hidden_field :longitude %>
 <%= f.submit %>
 <% end %>
-
-<!--       t.belongs_to :employer
-      t.string :industry
-      t.decimal :wage
-      t.string :job_title
-      t.date :start_date
-      t.date :end_date
-      t.time :start_time
-      t.time :end_time
-      t.text :description
-      t.string :location
-      t.decimal :latitude
-      t.decimal :longitude
-      t.boolean :expiration_status, default: false -->

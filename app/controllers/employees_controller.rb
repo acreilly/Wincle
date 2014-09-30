@@ -2,12 +2,12 @@ class EmployeesController < ApplicationController
   include SessionsHelper
 
   def index
-
+    # list all employees related to employer
+    # job search
   end
 
   def edit
     @employee = current_user.employee
-    binding.pry
   end
 
   def update
