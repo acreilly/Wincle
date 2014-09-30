@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @user = User.new
+    # home page will have explanation of product and oauth login button
   end
 end

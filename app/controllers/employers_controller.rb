@@ -11,6 +11,9 @@ class EmployersController < ApplicationController
   end
 
   def update
+    # MAY NOT NEED THIS
+
+
     employer = Employer.find_by_user_id(current_user.id)
     employer.update_attributes(
       industry: params[:employer][:industry],

@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     code = params[:code]
     access_token = oauth.get_access_token(code)
 
-    linkedin = LinkedinHelper::ToLinkedin.new
+    linkedin = Linkedin.new
     if access_token.nil?
       redirect_to root_path
     else
