@@ -19,14 +19,6 @@ class EmployeesController < ApplicationController
     redirect_to posts_path
   end
 
-  def show
-    @employee = Employee.find(:id)
-  end
-
-  def delete
-
-  end
-
   private
 
   # def employee_params
