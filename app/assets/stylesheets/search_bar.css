@@ -1,6 +1,9 @@
 
-
-
+html, body, #my_map {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
 
 #my_map {
   margin: 0;
@@ -8,6 +11,7 @@
   width: 500px;
   height: 200px;
 }
+
 .controls {
   margin-top: 16px;
   border: 1px solid transparent;

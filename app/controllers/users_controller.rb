@@ -1,14 +1,20 @@
 class UsersController < ApplicationController
   include SessionsHelper
+  include UsersHelper
 
   def index
-
+    # Maybe dont need at all
+    # Maybe use to search specific users?
   end
 
+
+# MIGHT NOT NEED THIS
   def new
     @user = User.new
   end
 
+
+# MIGHT NOT NEED CREATE ANYMORE SINCE ONLY USING LINKEDIN
   def create
     @user = User.new(user_params)
     if @user.save
@@ -25,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    # ADD EDIT USER SECTION
     info = JobInfo::Client.new
     @industry = info.get_industries
     if current_user.user_type == "employee"
@@ -35,41 +42,55 @@ class UsersController < ApplicationController
   end
 
   def update
+    user = User.find(params[:id])
+    user.update_attributes(user_type: params["user"]["user_type"])
+    redirect_to user_path(user)
   end
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def home
     @posts = Post.all
   end
 
-  def delete
+  def destroy
+    # to delete a user
   end
 
   def login
-    linkedin = LinkedinHelper::ToLinkedin.new
-    redirect_to "#{linkedin.login}"
+    oauth = LinkedIn::OAuth2.new
+
+    url = oauth.auth_code_url
+    redirect_to "#{url}"
   end
 
   def linkedin_callback
-    linkedin = LinkedinHelper::ToLinkedin.new
-    access_token = linkedin.get_access_token(params[:code])
-    api = LinkedIn::API.new(access_token)
-    user_profile = api.profile
-    binding.pry
-    user_info = api.profile(fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url'])
-    session[:user_id] = user_info["id"]
-    session[:email] = user_info["email-address"]
-    session[:first_name] = user_info["first_name"]
-    session[:last_name] = user_info["last_name"]
-    session[:industry] = user_info["industry"]
-    session[:picture_url] = user_info["picture_url"]
-    session[:headline] = user_info["headline"]
-    session[:public_profile_url] = user_info["public-profile-url"]
+    oauth = LinkedIn::OAuth2.new
+    code = params[:code]
+    access_token = oauth.get_access_token(code)
 
-    redirect_to root_path
+    linkedin = Linkedin.new
+    if access_token.nil?
+      redirect_to root_path
+    else
+
+      user_info = linkedin.get_user_info(access_token)
+      linkedin_id = user_info["id"]
+      user = User.find_by(linkedin_id: linkedin_id)
+      if user == nil
+        user = linkedin.create_user(user_info)
+        if user.save
+          set_sessions(user, user_info)
+        else
+          redirect_to root_path
+        end
+      else
+        set_sessions(user, user_info)
+      end
+      redirect_to user_path(user)
+    end
   end
 
   private

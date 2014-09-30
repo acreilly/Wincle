@@ -1,0 +1,8 @@
+<div class="required_info_div">
+  <div id="user_type">
+  <%= form_for @user do |f| %>
+  <%= f.select :user_type, options_for_select([["Employee", "employee"], ["Employer", "employer"]]), {:include_blank => '-- Select TYPE --'}, :required => true  %>
+  <%= f.submit %>
+  <% end %>
+  </div>
+</div>

@@ -10,3 +10,13 @@ header{
   margin: 0;
   padding: 0;
 }
+
+#autocomplete {
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  -o-border-radius: 2em;
+  border-radius: 2em;
+  padding: 0.5em 1em;
+  width: 300px;
+}

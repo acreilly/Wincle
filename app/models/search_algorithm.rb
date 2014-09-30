@@ -11,10 +11,9 @@ class SearchAlgorithm
 
   def score(match)
     score = 100
-    score -= 100 if @listing.industry != match.industry
-    score -= 80 if @listing.job_title != match.job_title
-    score -= 10 if @listing.location != match.location
-
+    score -= 50 if @listing.industry != match.industry
+    score -= 30 if @listing.job_title != match.job_title
+    score -= 20 if @listing.location != match.location
     # points = ((distance_between(@listing.latitude, @listing.longitude, match) - 1) * 5).floor
     # score -= points if points > 0
 

@@ -2,12 +2,12 @@ class EmployeesController < ApplicationController
   include SessionsHelper
 
   def index
-
+    # list all employees related to employer
+    # job search
   end
 
   def edit
     @employee = current_user.employee
-    binding.pry
   end
 
   def update
@@ -17,14 +17,6 @@ class EmployeesController < ApplicationController
       job_title: params[:employee][:job_title],
       location: params[:employee][:location], bio: params[:employee][:bio])
     redirect_to posts_path
-  end
-
-  def show
-    @employee = Employee.find(:id)
-  end
-
-  def delete
-
   end
 
   private

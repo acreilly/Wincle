@@ -1,7 +1,7 @@
 
 /*--------- start login form stuff --------------------------- */
 
-#logindiv{
+.required_info_div{
   position: absolute;
   top: 0px;
   height: 100%;
@@ -12,12 +12,11 @@
 }
 
 #loginForm, #signupForm{
-  display: none;
   position: relative;
   top: 10%;
 }
 
-#logindiv .form {
+.required_info_div .form {
   border-radius:2px;
   padding:20px 30px;
   box-shadow:0 0 15px;
@@ -27,16 +26,16 @@
   margin: auto;
 }
 
-#logindiv .form label {
+.required_info_div .form label {
   font-family: sans-serif;
 }
 
-#logindiv .form h3 {
+.required_info_div .form h3 {
   font-family: sans-serif;
 }
 
 
-#logindiv input[type=button]{
+.required_info_div input[type=button]{
     background-color:#123456;
     border:1px solid white;
     font-family: sans-serif;
@@ -45,7 +44,7 @@
     width:49%;
 }
 
-#logindiv input{
+.required_info_div input{
     width:20%;
     height:35px;
     margin-top:5px;
