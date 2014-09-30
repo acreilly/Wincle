@@ -2,7 +2,7 @@ require 'faker'
 require 'chronic'
 
 industry = ["Accounting", "Airlines/Aviation", "Alternative Dispute Resolution", "Alternative Medicine", "Animation", "Apparel & Fashion"]
-job_title = ["Accountant","Stewardess","Fashion Designer","Animator"]
+job_title = ["Accountant","Stewardess", "Alternative Disputant", "Fake Doctor", "Animator", "Fashion Designer"]
 longs = [-122.411295, -122.408849, -122.409849, -122.397733, -122.4, -122.75, -122.738, -122.433396, -122.44, -122.45]
 lat = 37.785126
 var = (1..5).to_a.sample
