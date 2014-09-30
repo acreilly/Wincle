@@ -1,0 +1,31 @@
+<%= form_for @post do |f| %>
+<%= f.label :wage %>
+<%= f.text_field :wage %>
+<%= f.label :job_title %>
+<%= f.text_field :job_title, placeholder: "Job Title" %>
+<%= f.label :start_date %>
+<%= f.date_field :start_date %>
+<%= f.label :end_date %>
+<%= f.date_field :end_date %>
+<%= f.label :description %>
+<%= f.textarea :description %>
+<%= f.label :location %>
+<%= f.text_field :location %>
+<%= f.hidden_field :latitude %>
+<%= f.hidden_field :longitude %>
+<%= f.submit %>
+<% end %>
+
+<!--       t.belongs_to :employer
+      t.string :industry
+      t.decimal :wage
+      t.string :job_title
+      t.date :start_date
+      t.date :end_date
+      t.time :start_time
+      t.time :end_time
+      t.text :description
+      t.string :location
+      t.decimal :latitude
+      t.decimal :longitude
+      t.boolean :expiration_status, default: false -->

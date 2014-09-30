@@ -15,9 +15,9 @@
     <li><%= link_to "Profile", user_path(@user) %></li>
 
     <% if current_user.user_type == "employer" %>
-    <li><a href="">Employer</a></li>
+    <li><a href="">Find an Employee</a></li>
     <% else %>
-    <li><a href="">Employee</a></li>
+    <li><%= link_to "Jobs", employees_path %> </li>
     <% end %>
     <li><%= link_to "Logout", user_path(@user), method: :delete %></li>
   </ul>
