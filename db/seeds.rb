@@ -12,9 +12,7 @@ var = (1..5).to_a.sample
     user_type: "Employer",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    telephone: Faker::PhoneNumber.cell_phone,
-    email: Faker::Internet.email,
-    password_digest: "123"
+    email: Faker::Internet.email
     )
 
   Employer.create(
@@ -29,9 +27,7 @@ end
     user_type: "Employee",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    telephone: Faker::PhoneNumber.cell_phone,
-    email: Faker::Internet.email,
-    password_digest: "123"
+    email: Faker::Internet.email
     )
 
   Employee.create(
