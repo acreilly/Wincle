@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :employees, only: [:edit, :update, :index]
-  resources :employers, only: [:edit, :update]
+  resources :employers, only: [:edit, :update, :index]
   resources :posts
   resources :sessions, only: [:create]
   delete "logout", to: "sessions#destroy", as: "logout"

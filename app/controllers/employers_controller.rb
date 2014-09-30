@@ -18,14 +18,6 @@ class EmployersController < ApplicationController
     redirect_to posts_path
   end
 
-  def show
-
-  end
-
-  def delete
-
-  end
-
   private
 
   # def employer_params
