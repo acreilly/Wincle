@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   resources :employees, only: [:edit, :update, :index]
   resources :employers, only: [:edit, :update]
   resources :posts
-  resources :sessions, only: [:create, :destroy]
-  delete "delete_session", to: "sessions#destroy", as: "delete_session"
+  resources :sessions, only: [:create]
+  delete "logout", to: "sessions#destroy", as: "logout"
   get "login", to: "users#login", as: "login"
   get "linkedin_callback", to: "users#linkedin_callback", as: "linkedin_callback"
-  get "home", to: "users#home", as: "home"
+  get "profile", to: "users#profile", as: "profile"
   # get "employees", to: "posts#employees", as: "employees"
   # get "employers", to: "posts#employers", as: "employers"
   # The priority is based upon order of creation: first created -> highest priority.
